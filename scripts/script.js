@@ -90,16 +90,21 @@ var upperCasedCharacters = [
 
 // Function to prompt user for password options
 function getPasswordOptions() {
-  var characterLength = prompt("How many characters would you like your password to be?"); {
-    if (characterLength < 10 || characterLength > 64) {
-      alert("You must enter a password length between 10 and 64 characters");
+  var characterLength = prompt("Enter your password length (10-64 characters)"); {
+    if (characterLength == null){
+      return false;
+    }
+    else if (characterLength < 10 || characterLength > 64 || isNaN(characterLength)) {
+      alert("You must enter a numerical value between 10 and 64 characters"); {
+        return false;
+      }
     }
     var includeSpecialChar = confirm("Would you like to use special characters in your password?");
     var includeNums = confirm("Would you like to include numbers in your password?");
-    var includeUppercase = confirm("Would you like to include uppercase letters in yourpassword?");
+    var includeUppercase = confirm("Would you like to include uppercase letters in your password?");
     var includeLowercase = confirm("Would you like to include lowercase letters in your password?");
-   }
     return [characterLength, includeSpecialChar, includeNums, includeUppercase, includeLowercase];
+  }
 }
 
 // Function for getting a random element from an array
