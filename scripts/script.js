@@ -103,20 +103,58 @@ function getPasswordOptions() {
     var includeNums = confirm("Would you like to include numbers in your password?");
     var includeUppercase = confirm("Would you like to include uppercase letters in your password?");
     var includeLowercase = confirm("Would you like to include lowercase letters in your password?");
+    
     return [characterLength, includeSpecialChar, includeNums, includeUppercase, includeLowercase];
   }
 }
 
+
 // Function for getting a random element from an array
 function getRandom(arr) {
-
+  var index = [Math.floor(Math.random() * arr.length)];
+  return arr[index];
 }
 
 // Function to generate password with user input
 function generatePassword() {
-
-  var options = getPasswordOptions();
   
+  var options = getPasswordOptions();
+  var passwordLength = characterLength;
+
+  var charChoices = [];
+  charChoices = charChoices.concat(specialCharacters);
+  charChoices = charChoices.concat(numericCharacters);
+  charChoices = charChoices.concat(lowerCasedCharacters);
+  charChoices = charChoices.concat(upperCasedCharacters);
+
+  console.log(charChoices);
+
+  while (password.length < passwordLength) {
+    if (includeSpecialChar || includeNums || lowerCasedCharacters || upperCasedCharacters) {
+    index = Math.floor(Math.random() * charChoices.length);
+    password += charChoices[index];
+  
+      if (includesSpecialChar === true) {
+        charChoices = charChoices.concat(specialCharacters);
+      }
+      if (includeNums === true) {
+        charChoices = charChoices.concat(numericCharacters);
+      }
+      if (lowerCasedCharacters === true) {
+        charChoices = charChoices.concat(lowerCasedCharacters);
+      }
+      if (upperCasedCharacters === true) {
+        charChoices = charChoices.concat(upperCasedCharacters);
+      }
+    }
+
+    else {
+      alert("Please choose at least one character type to generate password");
+    }
+  }
+    var password = "";
+
+    return[options, passwordLength, password];
 }
 
 // Get references to the #generate element
