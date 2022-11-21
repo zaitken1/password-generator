@@ -92,11 +92,11 @@ var upperCasedCharacters = [
 function getPasswordOptions() {
   var characterLength = prompt("Enter your password length (10-64 characters)"); {
     if (characterLength == null){
-      return false;
+      return null;
     }
     else if (characterLength < 10 || characterLength > 64 || isNaN(characterLength)) {
       alert("You must enter a numerical value between 10 and 64 characters"); {
-        return false;
+        return null;
       }
     }
     var includeSpecialChar = confirm("Would you like to use special characters in your password?");
@@ -119,7 +119,7 @@ function getRandom(arr) {
 function generatePassword() {
   
   var options = getPasswordOptions();
-  var passwordLength = characterLength;
+  var passwordLength = options.characterLength;
 
   var charChoices = [];
   charChoices = charChoices.concat(specialCharacters);
