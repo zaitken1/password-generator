@@ -146,7 +146,7 @@ function generatePassword() {
     var index = Math.floor(Math.random() * charChoices.length);
     passwordChar += charChoices[index];
   } 
-  return password;
+  return passwordChar;
 }
 
 // Get references to the #generate element
