@@ -90,7 +90,6 @@ var upperCasedCharacters = [
 
 var characterLength;
 
-
 // Function to prompt user for password options
 function getPasswordOptions() {
   characterLength = prompt("Enter your password length (10-64 characters)"); {
@@ -111,7 +110,6 @@ function getPasswordOptions() {
     }
     
     charChoices = []
-
     for (var i in options) {
       if (options.includeSpecialChar == true) {
       charChoices = charChoices.concat(specialCharacters);
@@ -129,33 +127,26 @@ function getPasswordOptions() {
         alert("Please choose at least one character type to generate password");
       }
 
-      console.log(options);
+    console.log(charChoices);
 
-    return [options.characterLength, options.includeSpecialChar, options.includeNums, options.includeUppercase, options.includeLowercase];
+    return [charChoices, options.characterLength, options.includeSpecialChar, options.includeNums, options.includeUppercase, options.includeLowercase];
 
     }
 
-    var password = "";
-    while (password.length < characterLength) {
-    var index = Math.floor(Math.random() * charChoices.length);
-    password += charChoices[index];
-  } 
-
-  return[options.getOptions, options.passwordLength, options.password];
+  return[options.getOptions, options.passwordLength, password];
   }
-}
-
-
-// Function for getting a random element from an array
-function getRandom(arr) {
-  var index = [Math.floor(Math.random() * arr.length)];
-  return arr[index];
 }
 
 // Function to generate password with user input
 function generatePassword() {
-  
-  var getOptions = getPasswordOptions();
+  getPasswordOptions();
+
+  var passwordChar = "";
+    while (passwordChar.length < characterLength) {
+    var index = Math.floor(Math.random() * charChoices.length);
+    passwordChar += charChoices[index];
+  } 
+  return password;
 }
 
 // Get references to the #generate element
