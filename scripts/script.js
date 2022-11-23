@@ -88,9 +88,12 @@ var upperCasedCharacters = [
   'Z'
 ];
 
+var characterLength;
+
+
 // Function to prompt user for password options
 function getPasswordOptions() {
-  var characterLength = prompt("Enter your password length (10-64 characters)"); {
+  characterLength = prompt("Enter your password length (10-64 characters)"); {
     if (characterLength == null){
       return null;
     }
@@ -100,32 +103,45 @@ function getPasswordOptions() {
       }
     }
 
-    var charOptions = {
+    var options = {
       includeSpecialChar: confirm("Would you like to use special characters in your password?"),
       includeNums: confirm("Would you like to include numbers in your password?"),
       includeUppercase: confirm("Would you like to include uppercase letters in your password?"),
       includeLowercase: confirm("Would you like to include lowercase letters in your password?")
     }
     
-    finalCharOptions = []
-    
-    for (var i in charOptions) {
-      if (includesSpecialChar == true) {
+    charChoices = []
+
+    for (var i in options) {
+      if (options.includeSpecialChar == true) {
       charChoices = charChoices.concat(specialCharacters);
       }
-      else if (includeNums == true) {
+      else if (options.includeNums == true) {
       charChoices = charChoices.concat(numericCharacters);
       }
-      else if (includeLowercase == true) {
+      else if (options.includeLowercase == true) {
       charChoices = charChoices.concat(lowerCasedCharacters);
       }
-      else if (includeUppercase == true) {
+      else if (options.includeUppercase == true) {
       charChoices = charChoices.concat(upperCasedCharacters);
       }
+      else {
+        alert("Please choose at least one character type to generate password");
+      }
 
-    return [characterLength, includeSpecialChar, includeNums, includeUppercase, includeLowercase];
+      console.log(options);
+
+    return [options.characterLength, options.includeSpecialChar, options.includeNums, options.includeUppercase, options.includeLowercase];
 
     }
+
+    var password = "";
+    while (password.length < characterLength) {
+    var index = Math.floor(Math.random() * charChoices.length);
+    password += charChoices[index];
+  } 
+
+  return[options.getOptions, options.passwordLength, options.password];
   }
 }
 
@@ -139,37 +155,7 @@ function getRandom(arr) {
 // Function to generate password with user input
 function generatePassword() {
   
-  var options = getPasswordOptions();
-  var passwordLength = options.characterLength;
-
-
-
-  while (password.length < passwordLength) {
-    if (includeSpecialChar || includeNums || lowerCasedCharacters || upperCasedCharacters) {
-    index = Math.floor(Math.random() * charChoices.length);
-    password += charChoices[index];
-  
-      if (includesSpecialChar === true) {
-        charChoices = charChoices.concat(specialCharacters);
-      }
-      if (includeNums === true) {
-        charChoices = charChoices.concat(numericCharacters);
-      }
-      if (lowerCasedCharacters === true) {
-        charChoices = charChoices.concat(lowerCasedCharacters);
-      }
-      if (upperCasedCharacters === true) {
-        charChoices = charChoices.concat(upperCasedCharacters);
-      }
-    }
-
-    else {
-      alert("Please choose at least one character type to generate password");
-    }
-  }
-    var password = "";
-
-    return[options, passwordLength, password];
+  var getOptions = getPasswordOptions();
 }
 
 // Get references to the #generate element
