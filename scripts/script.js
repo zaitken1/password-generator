@@ -99,12 +99,33 @@ function getPasswordOptions() {
         return null;
       }
     }
-    var includeSpecialChar = confirm("Would you like to use special characters in your password?");
-    var includeNums = confirm("Would you like to include numbers in your password?");
-    var includeUppercase = confirm("Would you like to include uppercase letters in your password?");
-    var includeLowercase = confirm("Would you like to include lowercase letters in your password?");
+
+    var charOptions = {
+      includeSpecialChar: confirm("Would you like to use special characters in your password?"),
+      includeNums: confirm("Would you like to include numbers in your password?"),
+      includeUppercase: confirm("Would you like to include uppercase letters in your password?"),
+      includeLowercase: confirm("Would you like to include lowercase letters in your password?")
+    }
     
+    finalCharOptions = []
+    
+    for (var i in charOptions) {
+      if (includesSpecialChar == true) {
+      charChoices = charChoices.concat(specialCharacters);
+      }
+      else if (includeNums == true) {
+      charChoices = charChoices.concat(numericCharacters);
+      }
+      else if (includeLowercase == true) {
+      charChoices = charChoices.concat(lowerCasedCharacters);
+      }
+      else if (includeUppercase == true) {
+      charChoices = charChoices.concat(upperCasedCharacters);
+      }
+
     return [characterLength, includeSpecialChar, includeNums, includeUppercase, includeLowercase];
+
+    }
   }
 }
 
@@ -121,13 +142,7 @@ function generatePassword() {
   var options = getPasswordOptions();
   var passwordLength = options.characterLength;
 
-  var charChoices = [];
-  charChoices = charChoices.concat(specialCharacters);
-  charChoices = charChoices.concat(numericCharacters);
-  charChoices = charChoices.concat(lowerCasedCharacters);
-  charChoices = charChoices.concat(upperCasedCharacters);
 
-  console.log(charChoices);
 
   while (password.length < passwordLength) {
     if (includeSpecialChar || includeNums || lowerCasedCharacters || upperCasedCharacters) {
