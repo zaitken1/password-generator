@@ -1,79 +1,31 @@
-# Module 5 Challenge: Password Generator
+# Password Generator
 
-## Overview
- 
-This week’s challenge requires you to create an application that an employee can use to generate a random password based on criteria they’ve selected by modifying starter code. This app will run in the browser, and will feature dynamically updated HTML and CSS powered by JavaScript code that you write. It will have a clean and polished user interface that is responsive, ensuring that it adapts to multiple screen sizes.
+## Description
 
-The password can include special characters. If you’re unfamiliar with these, see this [list of Password Special Characters from the OWASP Foundation](https://www.owasp.org/index.php/Password_special_characters).
+This application creates a random password generator which can be used to create a password of a given length between 10-64 characters. The user can decide to include special characters (!"?>&), numeric characters, lower and uppercase characters, and once decided, the random password is output to the page.
 
-## Instructions
+The following functionality is present:
 
-The following image shows the web application's appearance and functionality:
-
-![password generator demo](./assets/05-javascript-challenge-demo.png)
-
-
-* Generate a password when the button is clicked
-  * Present a series of prompts for password criteria
-    * Length of password
+* Generate a password when the Generate Password button is clicked
+  * Present a prompt requesting the user to input the length of password
       * At least 10 characters but no more than 64.
-    * Character types
-      * Lowercase
-      * Uppercase
-      * Numeric
+    * Present a confirm pop-up requesting the user select which character types to include:
       * Special characters ($@%&*, etc)
-  * Code should validate for each input and at least one character type should be selected
-  * Once prompts are answered then the password should be generated and displayed in an alert or written to the page
+      * Numeric characters
+      * Lowercase characters
+      * Uppercase characters
+  * At least one character type should be selected, or an alert will display asking the user to input again
+  * Once prompts are answered then the password is generated and written to the page
 
-## Grading Requirements
+I have used a series of functions to create this password generator, along with if and else if statements to guide the user journey. In order to use the full selection of characters, I have concatenated the data arrays based on user selections via the prompts. Finally, I have used Math.floor and Math.random to calculate the password length based on user input.
 
-This challenge is graded based on the following criteria: 
+## Screenshot
 
-### Technical Acceptance Criteria: 40%
-
-* Satisfies all of the above acceptance criteria plus the following:
-
-  * The challenge should not produce any errors in the console when you inspect it using Chrome DevTools.
-
-### Deployment: 32%
-
-* Application deployed at live URL.
-
-* Application loads with no errors.
-
-* Application GitHub URL submitted.
-
-* GitHub repository that contains application code.
-
-### Application Quality: 15%
-
-* Application user experience is intuitive and easy to navigate.
-
-* Application user interface style is clean and polished.
-
-* Application resembles the mock-up functionality provided in the challenge instructions.
-
-### Repository Quality: 13%
-
-* Repository has a unique name.
-
-* Repository follows best practices for file structure and naming conventions.
-
-* Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
-
-* Repository contains multiple descriptive commit messages.
-
-* Repository contains quality README file with description, screenshot, and link to deployed application.
+![Screenshot of password generator tool](./assets/images/screenshot.jpg)
 
 
-## Review
+## Links
 
-You are required to submit the following for review:
+GitHub repository: https://github.com/zaitken1/password-generator
 
-* The URL of the deployed application.
-
-* The URL of the GitHub repository. Give the repository a unique name and include a README describing the project.
-
----
-
-© 2022 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved.
+Live application: https://zaitken1.github.io/password-generator/
