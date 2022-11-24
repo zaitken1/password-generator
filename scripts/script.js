@@ -110,17 +110,19 @@ function getPasswordOptions() {
     }
     
     charChoices = []
-    for (var i in options) {
       if (options.includeSpecialChar == true) {
       charChoices = charChoices.concat(specialCharacters);
       }
-      else if (options.includeNums == true) {
+
+      if (options.includeNums == true) {
       charChoices = charChoices.concat(numericCharacters);
       }
-      else if (options.includeLowercase == true) {
+      
+      if (options.includeLowercase == true) {
       charChoices = charChoices.concat(lowerCasedCharacters);
       }
-      else if (options.includeUppercase == true) {
+      
+      if (options.includeUppercase == true) {
       charChoices = charChoices.concat(upperCasedCharacters);
       }
       else {
@@ -135,7 +137,7 @@ function getPasswordOptions() {
 
   return[options.getOptions, options.passwordLength, password];
   }
-}
+
 
 // Function to generate password with user input
 function generatePassword() {
