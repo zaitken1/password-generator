@@ -99,7 +99,7 @@ function getPasswordOptions() {
     else if (characterLength < 10 || characterLength > 64 || isNaN(characterLength)) {
       alert("You must enter a numerical value between 10 and 64 characters"); {
         return null;
-      }
+    }
     }
 
     var options = {
@@ -125,17 +125,17 @@ function getPasswordOptions() {
       if (options.includeUppercase == true) {
       charChoices = charChoices.concat(upperCasedCharacters);
       }
-      else {
-        alert("Please choose at least one character type to generate password");
-      }
 
-    console.log(charChoices);
+      else if (options.includeSpecialChar == false && options.includeNums == false && options.includeLowercase == false && options.includeUppercase == false) {
+        alert("Please choose at least one character type to generate password"); {
+            getPasswordOptions()
+        }
+      }
 
     return [charChoices, options.characterLength, options.includeSpecialChar, options.includeNums, options.includeUppercase, options.includeLowercase];
 
     }
 
-  return[options.getOptions, options.passwordLength, password];
   }
 
 
