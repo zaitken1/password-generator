@@ -88,6 +88,7 @@ var upperCasedCharacters = [
   'Z'
 ];
 
+//Global variables
 var characterLength;
 
 // Function to prompt user for password options
@@ -102,6 +103,7 @@ function getPasswordOptions() {
     }
     }
 
+    //Confirm which special characters the user would like to include   
     var options = {
       includeSpecialChar: confirm("Would you like to use special characters in your password?"),
       includeNums: confirm("Would you like to include numbers in your password?"),
@@ -109,6 +111,7 @@ function getPasswordOptions() {
       includeLowercase: confirm("Would you like to include lowercase letters in your password?")
     }
     
+    //Concatenate arrays based on characters user would like to include
     charChoices = []
       if (options.includeSpecialChar == true) {
       charChoices = charChoices.concat(specialCharacters);
@@ -126,6 +129,7 @@ function getPasswordOptions() {
       charChoices = charChoices.concat(upperCasedCharacters);
       }
 
+      //Alert user to include at least one character set if none selected
       else if (options.includeSpecialChar == false && options.includeNums == false && options.includeLowercase == false && options.includeUppercase == false) {
         alert("Please choose at least one character type to generate password"); {
             getPasswordOptions()
